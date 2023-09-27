@@ -33,7 +33,7 @@ class Contact(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=100)
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(max_length=20)
     text = tinymce_models.HTMLField(default='NA',max_length=1000)
     photo = models.ImageField(upload_to = 'photo/', default = 'photo/None/no-img.jpg')
 
