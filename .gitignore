@@ -5,6 +5,3 @@ db.sqlite3
 .DS_Store
 /Karch/settings.py
 /media/
-/website/static/photo
-/website/static/screen
-/website/static/photo_folder
