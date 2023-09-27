@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block H %}
+"nav-link active"
+{% endblock %}
+<!--{% block F %}
+"nav-link"
+{% endblock %}-->
+{% block C %}
+"nav-link"
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+<div class='container'>
+    <div class="clearfix">
+        <div class='row'>
+            <div class='col-8'>
+                <div id="carouselExampleFade" class="carousel slide carousel-fade carousel-dark">
+                    <div class="carousel-inner">
+                
+                        {% for p in photos %}
+                            {% if p.number == ip %}
+                                <div class="carousel-item active">
+                                    <img src="{{ p.photo.url }}" class="col-md-3 rounded mx-auto d-block" style="width: 100%">
+                                </div>
+                            {% else %}
+                                <div class="carousel-item">
+                                    <img src="{{ p.photo.url }}" class="col-md-3 rounded mx-auto d-block" style="width: 75%">
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        
+            <div class='col-4'>
+                <div class='container h2 text-center'>
+                    {{ post.name }}
+                </div>
+                {{ post.text|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<br/>
+<br/>
+
+<div class="row row-cols-1 row-cols-md-5 g-4">
+    {% for post in photos %}    
+        <div class="col">
+            <div class="card" style="max-width: 30rem;">
+                <a href="{% url 'RD_detail' pk=pk ip=post.number %}">
+                <img src="{{ post.photo.url }}" class="card-img-top w-100" alt="{{ post.name }}">
+                </a>
+            </div>
+        </div>      
+    {% endfor %}
+</div>
+
+{% endblock %}

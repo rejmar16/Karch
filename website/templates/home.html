@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+
+
+{% block H %}
+"nav-link active"
+{% endblock %}
+{% block C %}
+"nav-link"
+{% endblock %}
+
+{% block content %}
+
+<nav class="nav nav-underline flex-column flex-sm-row h4">
+    {% if type == 'RD' %}
+    <a class="flex-sm-fill text-sm-center nav-link active bg-dark text-white rounded-3" aria-current="page" href="{% url 'RD_filter' type='RD' %}">Rodinné domy</a>
+    {% else %}
+    <a class="flex-sm-fill text-sm-center nav-link text-dark" aria-current="page" href="{% url 'RD_filter' type='RD' %}">Rodinné domy</a>
+    {% endif %}
+    {% if type == 'INTER' %}
+    <a class="flex-sm-fill text-sm-center nav-link active bg-dark text-white rounded-3" href="{% url 'RD_filter' type='INTER' %}">Interiéry</a>
+    {% else %}
+    <a class="flex-sm-fill text-sm-center nav-link text-dark" href="{% url 'RD_filter' type='INTER' %}">Interiéry</a>
+    {% endif %}
+    {% if type == 'JINE' %}
+    <a class="flex-sm-fill text-sm-center nav-link active bg-dark text-white rounded-3" href="{% url 'RD_filter' type='JINE' %}">Jiné</a>
+    {% else %}
+    <a class="flex-sm-fill text-sm-center nav-link text-dark" href="{% url 'RD_filter' type='JINE' %}">Jiné</a>
+    {% endif %}
+    {% if type == 'ALL' %}
+    <a class="flex-sm-fill text-sm-center nav-link active bg-dark text-white rounded-3" href="{% url 'home' %}">Vše</a>
+    {% else %}
+    <a class="flex-sm-fill text-sm-center nav-link text-dark" href="{% url 'home' %}">Vše</a>
+    {% endif %}
+    
+</nav>
+
+
+<br/>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% if type == 'ALL' %}
+        {% for post in pr_list %}
+            <div class="col">
+            <div class="card" style="max-width: 30rem;">
+                <a href="{% url 'RD_detail' pk=post.pk ip=1 %}">
+                <img src="{{ post.screen.url }}" class="card-img-top w-100" alt="{{ post.name }}">
+                <div class="card-body">
+                <h4 class="card-title">"{{ post.name }}"</h4>
+                <p class="card-text text-truncate">{{ post.text|safe }}</p>
+                </div>
+                <div class="card-footer">
+                <small class="text-body-secondary">{{ post.published_date }}</small>
+                </div>
+                </a>
+            </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        {% for post in pr_list %}
+            {% if post.type == type %}
+            <div class="col">
+            <div class="card" style="max-width: 30rem;">
+                <a href="{% url 'RD_detail' pk=post.pk ip=1 %}">
+                <img src="{{ post.screen.url }}" class="card-img-top w-100" alt="{{ post.name }}">
+                <div class="card-body">
+                <h4 class="card-title">"{{ post.name }}"</h4>
+                <p class="card-text text-truncate">{{ post.text|safe }}</p>
+                </div>
+                <div class="card-footer">
+                <small class="text-body-secondary">{{ post.published_date }}</small>
+                </div>
+                </a>
+            </div>
+            </div>
+            {% endif %}
+        {% endfor %}   
+    {% endif %}
+</div>
+
+
+{% endblock %}

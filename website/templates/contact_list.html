@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block H %}
+"nav-link"
+{% endblock %}
+{% block C %}
+"nav-link active"
+{% endblock %}
+{% block content %}
+
+<div class="clearfix">
+    <img src="{{ cont.photo.url }}" class="col-md-3 float-md-end mb-3 ms-md-3 img-thumbnail" alt="Photo">
+    {{ cont.text|safe }}
+    <br/>
+    <p>{{ cont.first_name}} {{ cont.last_name }}</p>
+    <p>architektonické studio</p>
+    <p>Roudnice nad Labem</p>
+
+    <p><a href="mailto:{{ cont.email }}">{{ cont.email }}</a></p>
+    <p>{{ cont.phone }}</p>
+ 
+</div>
+
+{% endblock %}
