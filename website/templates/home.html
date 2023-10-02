@@ -47,7 +47,7 @@
                 <img src="{{ post.screen.url }}" class="card-img-top w-100" alt="{{ post.name }}">
                 <div class="card-body">
                 <h4 class="card-title">"{{ post.name }}"</h4>
-                <p class="card-text text-truncate">{{ post.text|safe }}</p>
+                {% comment %} <p class="card-text text-truncate">{{ post.text|safe }}</p> {% endcomment %}
                 </div>
                 <div class="card-footer">
                 <small class="text-body-secondary">{{ post.published_date }}</small>
@@ -65,7 +65,7 @@
                 <img src="{{ post.screen.url }}" class="card-img-top w-100" alt="{{ post.name }}">
                 <div class="card-body">
                 <h4 class="card-title">"{{ post.name }}"</h4>
-                <p class="card-text text-truncate">{{ post.text|safe }}</p>
+                {% comment %} <p class="card-text text-truncate">{{ post.text|safe }}</p> {% endcomment %}
                 </div>
                 <div class="card-footer">
                 <small class="text-body-secondary">{{ post.published_date }}</small>
@@ -77,13 +77,13 @@
             <div class="col">
                 <div class="card border-light" style="max-width: 30rem;">
                     <a href="{% url 'RD_detail' pk=post.pk ip=1 %}" class="link-dark link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
-                    <img src="{{ post.screen.url }}" class="card-img-top w-100" alt="{{ post.name }}">
-                    <div class="card-body">
-                    <h4 class="card-title">"{{ post.name }}"</h4>
-                    <p class="card-text text-truncate">{{ post.text|safe }}</p>
+                    <img src="{{ post.screen.url }}" class="card-img-top w-100 opacity-50" alt="{{ post.name }}">
+                    <div class="card-body opacity-50">
+                    <h4 class="card-title opacity-50">"{{ post.name }}"</h4>
+                    {% comment %} <p class="card-text text-truncate opacity-50">{{ post.text|safe }}</p> {% endcomment %}
                     </div>
-                    <div class="card-footer">
-                    <small class="text-body-secondary">{{ post.published_date }}</small>
+                    <div class="card-footer opacity-50">
+                    <small class="text-body-secondary opacity-50">{{ post.published_date }}</small>
                     </div>
                     </a>
                 </div>
