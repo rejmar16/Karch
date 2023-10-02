@@ -5,6 +5,7 @@
 {% block H %}
 "nav-link active"
 {% endblock %}
+
 {% block C %}
 "nav-link"
 {% endblock %}
@@ -42,7 +43,7 @@
         {% for post in pr_list %}
             <div class="col">
             <div class="card" style="max-width: 30rem;">
-                <a href="{% url 'RD_detail' pk=post.pk ip=1 %}">
+                <a href="{% url 'RD_detail' pk=post.pk ip=1 %}" class="link-dark link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
                 <img src="{{ post.screen.url }}" class="card-img-top w-100" alt="{{ post.name }}">
                 <div class="card-body">
                 <h4 class="card-title">"{{ post.name }}"</h4>
@@ -59,8 +60,8 @@
         {% for post in pr_list %}
             {% if post.type == type %}
             <div class="col">
-            <div class="card" style="max-width: 30rem;">
-                <a href="{% url 'RD_detail' pk=post.pk ip=1 %}">
+            <div class="card border-dark" style="max-width: 30rem;">
+                <a href="{% url 'RD_detail' pk=post.pk ip=1 %}" class="link-dark link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
                 <img src="{{ post.screen.url }}" class="card-img-top w-100" alt="{{ post.name }}">
                 <div class="card-body">
                 <h4 class="card-title">"{{ post.name }}"</h4>
@@ -71,6 +72,21 @@
                 </div>
                 </a>
             </div>
+            </div>
+            {% else %}
+            <div class="col">
+                <div class="card border-light" style="max-width: 30rem;">
+                    <a href="{% url 'RD_detail' pk=post.pk ip=1 %}" class="link-dark link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                    <img src="{{ post.screen.url }}" class="card-img-top w-100" alt="{{ post.name }}">
+                    <div class="card-body">
+                    <h4 class="card-title">"{{ post.name }}"</h4>
+                    <p class="card-text text-truncate">{{ post.text|safe }}</p>
+                    </div>
+                    <div class="card-footer">
+                    <small class="text-body-secondary">{{ post.published_date }}</small>
+                    </div>
+                    </a>
+                </div>
             </div>
             {% endif %}
         {% endfor %}   
